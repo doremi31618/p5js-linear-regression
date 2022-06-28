@@ -27,10 +27,23 @@ function draw() {
     ellipse(x, y, 8, 8);
   }
   if (data.length > 0){
-    linearRegression();
+    //linearRegression();
+    gradientDescent()
     drawLine();
   }
-  
+ 
+}
+
+function gradientDescent(){
+  let learningRate = 0.05;
+  for(var p of data){
+
+    let guess = m * p.x + b;
+    let error = p.y - guess;
+    m = m + error * p.x * learningRate;
+    b = b + error * learningRate;
+
+  } 
 }
 
 function linearRegression(){
